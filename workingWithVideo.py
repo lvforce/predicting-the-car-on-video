@@ -37,6 +37,5 @@ def frame():
       break
 
   cv2.destroyAllWindows() 
+  return frames
 
-
-frame()
