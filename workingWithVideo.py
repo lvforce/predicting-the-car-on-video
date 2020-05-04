@@ -2,7 +2,7 @@ import cv2
 import numpy as np 
 from PIL import Image, ImageDraw, ImageFont
 
-def frame_car():
+def frame():
   video = cv2.VideoCapture('/home/roman/projects/2.mp4') 
   point = (0,0)
 
@@ -39,4 +39,4 @@ def frame_car():
   cv2.destroyAllWindows() 
 
 
-frame_car()
+frame()
