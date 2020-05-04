@@ -42,3 +42,6 @@ def train():
       100 * correct / total))
 
   return net
+
+
+
