@@ -1,14 +1,28 @@
 from nn import *
 from dataset import *
+import torch
+
 
 net = Net()
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
+def load_checkpoint(filepath):
+  checkpoint = torch.load(filepath)
+  model = checkpoint['model']
+  model.load_state_dict(checkpoint['state_dict'])
+  for parameters in model.parameters():
+    parameters.required_grad = False
+
+  model.eval()
+  return model
+
 def train():
+
+  """
   net.train()
-  for epoch in range(1):
+  for epoch in range(6):
 
     running_loss = 0.0
     for i, date in enumerate(trainloader, 0):
@@ -40,7 +54,8 @@ def train():
 
   print('Accuracy of the network on the 10000 test images: %d %%' % (
       100 * correct / total))
-
+"""
+  model = load_checkpoint('/home/roman/projects/Image-Classifier/src/checkpoint.pth')
   return net
 
 

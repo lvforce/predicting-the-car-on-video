@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 def frame():
-  video = cv2.VideoCapture('/home/roman/projects/2.mp4') 
+  video = cv2.VideoCapture('/home/roman/projects/9.mp4') 
   point = (0,0)
 
   if (video.isOpened()== False):  
@@ -23,10 +23,12 @@ def frame():
 
     if ret == True: 
       width  = video.get(cv2.CAP_PROP_FRAME_WIDTH)   
-      height = video.get(cv2.CAP_PROP_FRAME_HEIGHT) 
+      height = video.get(cv2.CAP_PROP_FRAME_HEIGHT)
+      lenght = video.get(cv2.CAP_PROP_POS_MSEC)
+      print(width, height, float("{0:.1f}".format(lenght)))
+      #frame = cv2.resize(frame, (1280,720),fx=0,fy=0, interpolation = cv2.INTER_CUBIC) 
       ren = cv2.rectangle(frame,point,(100, 50),(60, 255, 0),0)
       cv2.putText(frame, 'Car', org, font, fontScale, color, thickness,  cv2.LINE_AA)
-      cv2.imshow('Frame', frame) 
       cv2.imwrite('frame/frame'+str(new_frame)+'.jpg',ren)
       frames.append(frame)
       new_frame += 1
@@ -36,6 +38,5 @@ def frame():
     else:  
       break
 
-  cv2.destroyAllWindows() 
   return frames
 

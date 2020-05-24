@@ -14,8 +14,8 @@ loader = transforms.Compose([transforms.Resize((32, 32)),
 
 def prediction():
 
-	net = train()
 	frames = frame()
+	net = train()
 	counter = 0
 	predictedClass = []
 	accuracy = []
