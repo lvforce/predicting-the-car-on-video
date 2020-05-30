@@ -54,9 +54,16 @@ def train():
 
   print('Accuracy of the network on the 10000 test images: %d %%' % (
       100 * correct / total))
-"""
-  model = load_checkpoint('/home/roman/projects/Image-Classifier/src/checkpoint.pth')
-  return net
+
+  checkpoint = {'model': Net(),
+                'state_dict': net.state_dict(),
+                'optimizer': optimizer.state_dict()}
+
+  torch.save(checkpoint, 'checkpoint.pth')
+  """
+
+  model = load_checkpoint('/home/roman/projects/predicting-the-car-on-video/checkpoint.pth')
+  return model
 
 
 
